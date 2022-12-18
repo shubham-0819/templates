@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.0.0-beta.87/dist/themes/light.css" />
+  <script type="module"
+    src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.0.0-beta.87/dist/shoelace.js"></script>
+
+</head>
+
+<body>
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <nav class="w-full flex p-1.5 items-center">
+    <sl-button variant="primary" class="btn-menu">
+      <sl-icon name="house-door-fill" label="Menu"></sl-icon>
+    </sl-button>
+
+  </nav>
+
+  <!-- drawer -->
+  <sl-drawer label="Drawer" placement="start" class="drawer-overview">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    <sl-button slot="footer" variant="primary">Close</sl-button>
+  </sl-drawer>
+
+
+
+
+  <sl-tab-group>
+    <sl-tab slot="nav" panel="general">General</sl-tab>
+    <sl-tab slot="nav" panel="custom">Custom</sl-tab>
+    <sl-tab slot="nav" panel="advanced">Advanced</sl-tab>
+    <sl-tab-panel name="general">This is the general tab panel.</sl-tab-panel>
+    <sl-tab-panel name="custom">This is the custom tab panel.</sl-tab-panel>
+    <sl-tab-panel name="advanced">
+      <!-- display responsive nature  -->
+      <sl-split-panel style="--divider-width: 20px;">
+        <sl-icon slot="divider" name="grip-vertical"></sl-icon>
+
+        <div slot="start"
+          style="height: 450px; background: var(--sl-color-neutral-50); display: flex; align-items: center; justify-content: center;">
+          Start
+        </div>
+        <div slot="end">
+          <sl-split-panel vertical style="height: 450px; --divider-width:20px;">
+            <sl-icon slot="divider" name="grip-horizontal"></sl-icon>
+
+            <div slot="start"
+              style="height: 100%; background: var(--sl-color-neutral-50); display: flex; align-items: center; justify-content: center;">
+              Top
+            </div>
+            <div slot="end"
+              style="height: 100%; background: var(--sl-color-neutral-50); display: flex; align-items: center; justify-content: center;">
+              Bottom
+            </div>
+          </sl-split-panel>
+        </div>
+      </sl-split-panel>
+    </sl-tab-panel>
+  </sl-tab-group>
+  <!-- implement drag and drop https://www.w3schools.com/html/html5_draganddrop.asp -->
+
+  <!-- Dialog -->
+  <sl-dialog label="Dialog" class="dialog-overview">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    <sl-button slot="footer" variant="primary">Close</sl-button>
+  </sl-dialog>
+
+  <sl-button circle variant="primary" class="absolute bottom-5 right-5">
+    <sl-icon name="question-circle-fill"></sl-icon>
+  </sl-button>
+
+  <script type="module">
+    const dialog = document.querySelector('.dialog-overview');
+    const openButton = dialog.nextElementSibling;
+    const closeButton = dialog.querySelector('sl-button[slot="footer"]');
+
+    openButton.addEventListener('click', () => dialog.show());
+    closeButton.addEventListener('click', () => dialog.hide());
+  </script>
+
+  <script type="module">
+    const drawer = document.querySelector('.drawer-overview');
+    const openButton = document.querySelector('.btn-menu');
+    const closeButton = drawer.querySelector('sl-button[variant="primary"]');
+
+    openButton.addEventListener('click', () => drawer.show());
+    closeButton.addEventListener('click', () => drawer.hide());
+  </script>
+
+</body>
+
+</html>
